@@ -51,6 +51,18 @@ static bool nopreempt;
 module_param(nopreempt, bool, 0444);
 MODULE_PARM_DESC(nopreempt, "Disable GPU preemption");
 
+#define MODEL_A509	0x05000900
+#define MODEL_A512	0x05010200
+#define MODEL_A530	0x05030000
+#define MODEL_A612	0x06010200
+bool true_gpu = true;
+module_param(true_gpu, bool, 0664);
+MODULE_PARM_DESC(true_gpu, "Toggle true adreno gpu model / fake model");
+static int fake_gpu_model = 612;
+static int fake_gpu_hex = MODEL_A612;
+module_param(fake_gpu_model, int, 0664);
+MODULE_PARM_DESC(fake_gpu_model, "Accepted values are: 509, 512, 530, 612");
+
 #define DRIVER_VERSION_MAJOR   3
 #define DRIVER_VERSION_MINOR   1
 
