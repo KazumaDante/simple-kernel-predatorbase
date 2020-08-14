@@ -1,11 +1,11 @@
 DATE_START=$(date +"%s")
 # Clean out folder
-rm -rf '/media/system/root1/simple-kernel-genombase/out'
+rm -rf '/media/system/root1/simple-kernel-predatorbase/out'
 # Set defaults
-cd "/media/system/root1/simple-kernel-genombase"
+cd "/media/system/root1/simple-kernel-predatorbase"
 wd=$(pwd)
 out=$wd/out
-BUILD="/media/system/root1/simple-kernel-genombase"
+BUILD="/media/system/root1/simple-kernel-predatorbase"
 # Set kernel source workspace
 cd $BUILD
 # Export ARCH <arm, arm64, x86, x86_64>
@@ -37,5 +37,5 @@ DATE_END=$(date +"%s")
 DIFF=$(($DATE_END - $DATE_START))
 echo "Time: $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
 # mounting to browser
-cd "/media/system/root1/simple-kernel-genombase/out/arch/arm64/boot"
+cd "/media/system/root1/simple-kernel-predatorbase/out/arch/arm64/boot"
 python3 -m http.server 3401
