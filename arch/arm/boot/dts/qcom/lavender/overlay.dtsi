@@ -122,7 +122,7 @@
 };
 
 &pm660l_wled {
- 	qcom,fs-curr-ua = <19000>;
+ 	qcom,fs-curr-ua = <20000>;
  	qcom,en-cabc;
  	/delete-property/qcom,auto-calibration-enable;
 };
@@ -166,11 +166,11 @@
 };
 
 &lcdb_ldo_vreg {
-	qcom,ldo-ilim-ma = <255>;
+	qcom,ldo-ilim-ma = <260>;
 };
 
 &lcdb_ncp_vreg {
-	qcom,ncp-ilim-ma = <255>;
+	qcom,ncp-ilim-ma = <260>;
 };
 
 /* sdm660-audio */
