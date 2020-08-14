@@ -29,7 +29,7 @@ make O=$out ARCH=arm64 lavender-perf_defconfig
 # Build Kernel
 make O=$out ARCH=arm64 \
 CC="/media/system/root1/aosp-clang/bin/clang-10" \
-CLANG_TRIPLE=aarch64-maestro-linux-gnu- \
+# CLANG_TRIPLE=aarch64-maestro-linux-gnu- \
 CROSS_COMPILE="/media/system/root1/aarch64-maestro-linux-android/bin/aarch64-maestro-linux-gnu-" \
 CROSS_COMPILE_ARM32="/media/system/root1/arm-maestro-linux-gnueabi/bin/arm-maestro-linux-gnueabi-" \
 -j$(nproc --all) Image.gz-dtb
