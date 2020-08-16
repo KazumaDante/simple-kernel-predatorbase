@@ -16,11 +16,11 @@
 		qcom,mdss-dsi-panel-name = "boe td4320 fhdplus video mode dsi panel";
 		qcom,mdss-dsi-panel-controller = <&mdss_dsi0>;
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
-		qcom,mdss-dsi-panel-framerate = <62>;
+		qcom,mdss-dsi-panel-framerate = <61>;
     qcom,mdss-dsi-panel-clockrate = <438133333>;
-    qcom,mdss-tear-check-frame-rate = <6200>;
+    qcom,mdss-tear-check-frame-rate = <6100>;
     qcom,min-refresh-rate = <24>;
-		qcom,max-refresh-rate = <60>;
+		qcom,max-refresh-rate = <61>;
     qcom,mdss-dsi-te-check-enable;
     qcom,mdss-tear-check-sync-cfg-height = <0xfff0>;
     qcom,mdss-tear-check-sync-init-val = <2340>;
@@ -38,7 +38,7 @@
 		qcom,mdss-dsi-h-back-porch = <100>;
 		qcom,mdss-dsi-h-pulse-width = <2>;
 		qcom,mdss-dsi-h-sync-skew = <0>;
-		qcom,mdss-dsi-v-back-porch = <60>;
+		qcom,mdss-dsi-v-back-porch = <61>;
 		qcom,mdss-dsi-v-front-porch = <4>;
 		qcom,mdss-dsi-v-pulse-width = <4>;
 		qcom,mdss-dsi-h-left-border = <0>;
@@ -232,8 +232,7 @@
 		qcom,mdss-dsi-pan-enable-dynamic-bitclk;
 		qcom,mdss-dsi-dynamic-bitclk_freq = <798240576 801594528 804948480
 			808302432 811656384>;
-		qcom,mdss-dsi-pan-enable-dynamic-fps;
-		qcom,mdss-dsi-pan-fps-update = "dfps_immediate_porch_mode_vfp";
+		qcom,mdss-dsi-pan-fps-update = "dfps_suspend_resume_mode";
 
 		cm,mdss-livedisplay-cabc-cmd = [
 				15 01 00 00 00 00 02 55 00
