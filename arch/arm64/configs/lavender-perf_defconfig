@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.4.230 Kernel Configuration
+# Linux/arm64 4.4.232 Kernel Configuration
 #
 CONFIG_ARM64=y
 CONFIG_64BIT=y
@@ -5118,5 +5118,3 @@ CONFIG_OID_REGISTRY=y
 CONFIG_ARCH_HAS_SG_CHAIN=y
 CONFIG_QMI_ENCDEC=y
 # CONFIG_QMI_ENCDEC_DEBUG is not set
-CONFIG_POWERSUSPEND=y
-# CONFIG_POWERSUSPEND_DEBUG is not set
