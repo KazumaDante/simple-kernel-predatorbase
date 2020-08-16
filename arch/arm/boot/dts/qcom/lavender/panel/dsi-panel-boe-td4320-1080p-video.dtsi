@@ -17,8 +17,6 @@
 		qcom,mdss-dsi-panel-controller = <&mdss_dsi0>;
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
 		qcom,mdss-dsi-panel-framerate = <61>;
-    qcom,mdss-dsi-panel-clockrate = <424000000>;
-    qcom,mdss-tear-check-frame-rate = <6100>;
     qcom,min-refresh-rate = <24>;
 		qcom,max-refresh-rate = <61>;
 		qcom,mdss-dsi-virtual-channel-id = <0>;
