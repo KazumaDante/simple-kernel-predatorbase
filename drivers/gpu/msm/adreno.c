@@ -2836,7 +2836,7 @@ static void adreno_gpu_model(struct kgsl_device *device, char *str,
 				 ADRENO_CHIPID_PATCH(fake_gpu_hex) + 1);
 	}
 }
-cd /media/system/root1/simple-kernel-predatorbase && rm -rf out && git pull && clear && make clean && make mrproper && clear &&  ./compile.sh
+
 static void adreno_suspend_device(struct kgsl_device *device,
 				pm_message_t pm_state)
 {
