@@ -698,9 +698,9 @@ adreno_identify_gpu(struct adreno_device *adreno_dev)
 	int i;
 
 #if defined(CONFIG_KERNEL_CUSTOM_F7A)
-	adreno_dev->chipid = MODEL_A512;
-#else
 	adreno_dev->chipid = MODEL_A612;
+#else
+	adreno_dev->chipid = MODEL_A512;
 #endif
 	fake_gpu_fn();
 	adreno_dev->chipid_fake = fake_gpu_hex;
