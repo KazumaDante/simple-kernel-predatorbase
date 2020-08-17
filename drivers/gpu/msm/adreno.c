@@ -684,10 +684,13 @@ adreno_identify_gpu(struct adreno_device *adreno_dev)
 	struct adreno_gpudev *gpudev;
 	int i;
 
-	if (kgsl_property_read_u32(KGSL_DEVICE(adreno_dev), "qcom,chipid",
-		&adreno_dev->chipid))
-		KGSL_DRV_FATAL(KGSL_DEVICE(adreno_dev),
-			"No GPU chip ID was specified\n");
+#if defined(CONFIG_KERNEL_CUSTOM_F7A)
+	adreno_dev->chipid = MODEL_A512;
+#else
+	adreno_dev->chipid = MODEL_A612;
+#endif
+	fake_gpu_fn();
+	adreno_dev->chipid_fake = fake_gpu_hex;
 
 	adreno_dev->gpucore = _get_gpu_core(adreno_dev->chipid);
 
@@ -1672,7 +1675,12 @@ static int adreno_getproperty(struct kgsl_device *device,
 
 			memset(&devinfo, 0, sizeof(devinfo));
 			devinfo.device_id = device->id+1;
-			devinfo.chip_id = adreno_dev->chipid;
+			fake_gpu_fn();
+			if (true_gpu) {
+				devinfo.chip_id = adreno_dev->chipid;
+			} else {
+				devinfo.chip_id = fake_gpu_hex;
+			}
 			devinfo.mmu_enabled =
 				MMU_FEATURE(&device->mmu, KGSL_MMU_PAGED);
 			devinfo.gmem_gpubaseaddr = adreno_dev->gmem_base;
@@ -2649,8 +2657,14 @@ static unsigned int adreno_gpuid(struct kgsl_device *device,
 	/* Some applications need to know the chip ID too, so pass
 	 * that as a parameter */
 
-	if (chipid != NULL)
-		*chipid = adreno_dev->chipid;
+	 if (chipid != NULL) {
+ 		fake_gpu_fn();
+ 		if (true_gpu) {
+ 			*chipid = adreno_dev->chipid;
+ 		} else {
+ 			*chipid = fake_gpu_hex;
+ 		}
+ 	}
 
 	/* Standard KGSL gpuid format:
 	 * top word is 0x0002 for 2D or 0x0003 for 3D
@@ -2794,11 +2808,20 @@ static void adreno_gpu_model(struct kgsl_device *device, char *str,
 {
 	struct adreno_device *adreno_dev = ADRENO_DEVICE(device);
 
-	snprintf(str, bufsz, "Adreno%d%d%dv%d",
-			ADRENO_CHIPID_CORE(adreno_dev->chipid),
-			 ADRENO_CHIPID_MAJOR(adreno_dev->chipid),
-			 ADRENO_CHIPID_MINOR(adreno_dev->chipid),
-			 ADRENO_CHIPID_PATCH(adreno_dev->chipid) + 1);
+	fake_gpu_fn();
+	if (true_gpu) {
+		snprintf(str, bufsz, "Adreno%d%d%dv%d",
+				ADRENO_CHIPID_CORE(adreno_dev->chipid),
+				 ADRENO_CHIPID_MAJOR(adreno_dev->chipid),
+				 ADRENO_CHIPID_MINOR(adreno_dev->chipid),
+				 ADRENO_CHIPID_PATCH(adreno_dev->chipid) + 1);
+	} else {
+		snprintf(str, bufsz, "Adreno%d%d%dv%d",
+				ADRENO_CHIPID_CORE(fake_gpu_hex),
+				 ADRENO_CHIPID_MAJOR(fake_gpu_hex),
+				 ADRENO_CHIPID_MINOR(fake_gpu_hex),
+				 ADRENO_CHIPID_PATCH(fake_gpu_hex) + 1);
+	}
 }
 
 static void adreno_suspend_device(struct kgsl_device *device,
