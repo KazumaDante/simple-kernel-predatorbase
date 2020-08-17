@@ -58,8 +58,8 @@ MODULE_PARM_DESC(nopreempt, "Disable GPU preemption");
 bool true_gpu = true;
 module_param(true_gpu, bool, 0664);
 MODULE_PARM_DESC(true_gpu, "Toggle true adreno gpu model / fake model");
-static int fake_gpu_model = 612;
-static int fake_gpu_hex = MODEL_A612;
+static int fake_gpu_model = 512;
+static int fake_gpu_hex = MODEL_A512;
 module_param(fake_gpu_model, int, 0664);
 MODULE_PARM_DESC(fake_gpu_model, "Accepted values are: 509, 512, 530, 612");
 
