@@ -696,6 +696,10 @@ config DEFERRED_STRUCT_PAGE_INIT
 	  processes running early in the lifetime of the systemm until kswapd
 	  finishes the initialisation.
 
+config VMSTAT_INTERVAL
+	int "Default interval in seconds to update vmstat"
+	default 1
+
 config IDLE_PAGE_TRACKING
 	bool "Enable idle page tracking"
 	depends on SYSFS && MMU
