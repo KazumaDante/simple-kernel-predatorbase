@@ -123,8 +123,8 @@ static int msm_cpufreq_target(struct cpufreq_policy *policy,
 
 		/* The old rate needs time to settle before it can be changed again */
 			delta_us = ktime_us_delta(ktime_get_boottime(), udata->last_update);
-			if (delta_us < 5000 && target_freq < 1113600 && target_freq > 300000)
-				usleep_range(30000 - delta_us, 33000 - delta_us);
+			if (delta_us < 50000 && target_freq < 1113600 && target_freq > 300000)
+				usleep_range(50000 - delta_us, 55000 - delta_us);
 			udata->last_update = ktime_get_boottime();
 
 	ret = set_cpu_freq(policy, table[index].frequency,
