@@ -677,6 +677,19 @@ static inline const struct adreno_gpu_core *_get_gpu_core(unsigned int chipid)
 	return NULL;
 }
 
+static void fake_gpu_fn(void) {
+
+	if (fake_gpu_model == 509) {
+		fake_gpu_hex = MODEL_A509;
+	} else if (fake_gpu_model == 512) {
+		fake_gpu_hex = MODEL_A512;
+	} else if (fake_gpu_model == 530) {
+		fake_gpu_hex = MODEL_A530;
+	} else if (fake_gpu_model == 612) {
+		fake_gpu_hex = MODEL_A612;
+	}
+}
+
 static void
 adreno_identify_gpu(struct adreno_device *adreno_dev)
 {
@@ -2823,7 +2836,7 @@ static void adreno_gpu_model(struct kgsl_device *device, char *str,
 				 ADRENO_CHIPID_PATCH(fake_gpu_hex) + 1);
 	}
 }
-
+cd /media/system/root1/simple-kernel-predatorbase && rm -rf out && git pull && clear && make clean && make mrproper && clear &&  ./compile.sh
 static void adreno_suspend_device(struct kgsl_device *device,
 				pm_message_t pm_state)
 {
